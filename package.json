@@ -1,0 +1,36 @@
+{
+  "name": "vue-library-sample",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "description": "Vue library sample for testing individual component usage with stripping unused code",
+  "license": "Apache-2.0",
+  "main": "dist/test-library.ssr.js",
+  "module": "dist/test-library.esm.js",
+  "unpkg": "dist/test-library.min.js",
+  "files": [
+    "dist/*",
+    "src/**/*.vue",
+    "!src/lib-dev.vue"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "cross-env": "^5.2.0",
+    "minimist": "^1.2.0",
+    "rollup": "^1.12.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-vue": "^5.0.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

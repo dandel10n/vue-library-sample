@@ -6,10 +6,10 @@
 
 <script>
 export default {
-    name: 'LibComponentTwo',
+    name: 'LibComponentThree',
     data () {
         return {
-            number: 2
+            number: 3
         }
     },
     computed: {

@@ -1,7 +1,7 @@
 {
   "name": "vue-library-sample",
   "sideEffects": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue library sample for testing individual component usage with stripping unused code",
   "license": "Apache-2.0",
   "main": "dist/test-library.ssr.js",

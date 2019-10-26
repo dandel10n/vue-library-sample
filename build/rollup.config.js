@@ -1,4 +1,5 @@
 // rollup.config.js
+import fs from 'fs'
 import vue from 'rollup-plugin-vue';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
@@ -7,6 +8,7 @@ import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
 
 const argv = minimist(process.argv.slice(2));
+const pkgJson = JSON.parse(fs.readFileSync('package.json','utf8'))
 
 const baseConfig = {
   input: 'src/entry.js',
@@ -50,7 +52,7 @@ if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
     output: {
-      file: 'dist/test-library.esm.js',
+      file: pkgJson.module,
       format: 'esm',
       exports: 'named',
     },
@@ -74,7 +76,7 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/test-library.ssr.js',
+      file: pkgJson.main,
       format: 'cjs',
       name: 'TestLibrary',
       exports: 'named',
@@ -101,7 +103,7 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/test-library.min.js',
+      file: pkgJson.unpkg,
       format: 'iife',
       name: 'TestLibrary',
       exports: 'named',
